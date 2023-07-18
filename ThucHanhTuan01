@@ -1,0 +1,374 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+const double Pi = 3.14;
+int main()
+{
+
+    cout << "CO BAN" << endl;
+    cout << "Hay chon menu sau:" << endl;
+    cout << "Nhap 1: Bai 1" << endl;
+    cout << "Nhap 2: Bai 2" << endl;
+    cout << "Nhap 3: Bai 3" << endl;
+    cout << "Nhap 4: Bai 4" << endl;
+    cout << "Nhap 5: Bai 5" << endl;
+    cout << "----------***-------------" << endl;
+    cout << "UNG DUNG" << endl;
+    cout << "Hay chon menu sau:" << endl;
+    cout << "Nhap 6: Bai 1" << endl;
+    cout << "Nhap 7: Bai 2" << endl;
+    cout << "Nhap 8: Bai 3" << endl;
+    cout << "Nhap 9: Bai 4" << endl;
+    cout << "Nhap 10: Bai 5" << endl;
+    cout << "Nhap 11: Bai 6" << endl;
+    cout << "Nhap 12: Bai 7" << endl;
+    cout << "Nhap 13: Bai 8" << endl;
+    cout << "Nhap 14: Bai 9" << endl;
+    cout << "Nhap 15: Bai 10" << endl;
+    cout << "Nhap 0: de thoat khoi ung dung" << endl;
+    int today = 2023;
+    int namsinh = 0;
+    int tuoi = 0;
+    float R, chuvi, dt;
+    int num1, num2;
+
+    char ch;
+
+    int number;
+    int control;
+    cin >> control;
+
+    switch (control)
+    {
+    case 1:
+        cout << "************************" << endl;
+        cout << "*      TUONG ANH       *" << endl;
+        cout << "*      0850080002      *" << endl;
+        cout << "************************" << endl;
+        break;
+    case 2:
+        cout << "Nhap nam sinh: " << endl;
+        cin >> namsinh;
+        tuoi = today - namsinh;
+        cout << "Ban sinh nam " << namsinh << "vay ban" << tuoi << "tuoi" << endl;
+
+        break;
+    case 3:
+        cout << "Nhap 1: de lam cau 3 a" << endl;
+        cout << "Nhap 2: de lam cau 3 b" << endl;
+        cin >> control;
+
+        switch (control)
+        {
+        case 1:
+
+            cout << "Nhap mot ki tu: ";
+            cin >> ch;
+
+            cout << "Ma cua ki tu '" << ch << "' la " << static_cast<int>(ch) << endl;
+            break;
+        case 2:
+
+            cout << "Nhap so nguyen: ";
+            cin >> number;
+
+            if (number >= 0 && number <= 127)
+            {
+                cout << "Ki tu tuong ung ASCII " << number << " la '" << static_cast<char>(number) << "'" << endl;
+            }
+            else
+            {
+                cout << "So nguyen nhap vao khong phu hop." << endl;
+            }
+            break;
+
+        default:
+            break;
+        }
+        break;
+    case 4:
+
+        cout << "Nhap ban kinh ";
+        cin >> R;
+
+        // Tính chu vi và diện tích
+        chuvi = 2 * 3.14 * R;
+        dt = 3.14 * R * R;
+
+        // In ra kết quả
+        cout << "Chu vi la " << chuvi << endl;
+        cout << "Dien tich la " << dt << endl;
+        break;
+    case 5:
+        cout << "Nhap so thu nhat ";
+        cin >> num1;
+
+        cout << "Nhap so thu hai ";
+        cin >> num2;
+
+        int min, max;
+
+        if (num1 < num2)
+        {
+            min = num1;
+            max = num2;
+        }
+        else
+        {
+            min = num2;
+            max = num1;
+        }
+
+        cout << "So nho nhat la " << min << endl;
+        cout << "So lon nhat la " << max << endl;
+        break;
+    case 6:
+        double R, dthc, tthc;
+        cout << "Nhap ban kinh hinh cau: ";
+        cin >> R;
+        // Tính diện tích và thể tích
+        dthc = 4 * Pi * R * R;
+        tthc = (4 / 3) * Pi * R * R * R;
+        // In ra kết quả
+        cout << "Dien tich hinh cau la: " << dthc << endl;
+        cout << "The tich hinh cau la: " << tthc << endl;
+        break;
+    case 7:
+        cout << "Nhap 1: de lam cau 2 a" << endl;
+        cout << "Nhap 2: de lam cau 2 b" << endl;
+        cin >> control;
+        switch (control)
+        {
+        case 1:
+            double x1, x2, y1, y2, hsg, kc;
+            cout << "nhap x1, y1" << endl;
+            cin >> x1 >> y1;
+            cout << "nhap x2, y2" << endl;
+            cin >> x2 >> y2;
+            hsg = (y2 - y1) / (x2 - x1);
+            cout << "He so goc:" << hsg << endl;
+            break;
+        case 2:
+            cout << "nhap x1, y1" << endl;
+            cin >> x1 >> y1;
+            cout << "nhap x2, y2" << endl;
+            cin >> x2 >> y2;
+            kc = sqrt(((y2 - y1) * (y2 - y1)) + ((x2 - x1) * (x2 - x1)));
+            cout << "khoang cach giua 2 diem:" << kc << endl;
+            break;
+        default:
+            break;
+        }
+        break;
+    case 8:
+        cout << "Nhap 1: de lam cau 3 a" << endl;
+        cout << "Nhap 2: de lam cau 3 b" << endl;
+        cin >> control;
+        switch (control)
+        {
+        case 1:
+            int ma;
+            int matt;
+            cout << "Nhap mot ki tu: ";
+            cin >> ch;
+            ma = static_cast<int>(ch);
+            matt = ma + 1;
+            cout << "1.";
+            cout << "Ma cua ki tu '" << ch << "' la " << ma << endl;
+            cout << "2.";
+            cout << "Ky tu tiep theo"
+                 << " la " << matt << endl;
+            break;
+        case 2:
+            cout << "Nhap so nguyen: ";
+            cin >> number;
+            if (number >= 0 && number <= 127)
+            {
+                char kitu = static_cast<char>(number);
+                char kttt = static_cast<char>(number + 1);
+                cout << "1.";
+                cout << "Ki tu tuong ung ASCII " << number << " la '" << kitu << "'" << endl;
+                cout << "2.";
+                cout << "Ki tu tiep theo ASCII " << number + 1 << " la '" << kttt << "'" << endl;
+            }
+            break;
+
+        default:
+            break;
+        }
+    case 9:
+        double R1, R2, R3;
+        double Rtd;
+        double Kq;
+        cout << "Nhap R1, R2, R3" << endl;
+        cin >> R1 >> R2 >> R3;
+        Rtd = (1 / R1) + (1 / R2) + (1 / R3);
+        Kq = 1 / Rtd;
+        cout << "Ket qua: " << Kq << endl;
+        break;
+    case 10:
+        int n;
+        cout << "Nhap so tu nhien n= ";
+        cin >> n;
+
+        // Tính S1 = 1 + 1/2 + 1/3 +...+ 1/n
+        double S1;
+        for (int i = 1; i <= n; i++)
+        {
+            S1 += 1.0 / i;
+        }
+
+        // Tính S2 = 1+2+3+...+n
+        int S2;
+        for (int i = 1; i <= n; i++)
+        {
+            S2 += i;
+        }
+
+        // Tính S3 =  tổng các số lẻ không lớn hơn n
+        int S3;
+        for (int i = 1; i <= n; i += 2)
+        {
+            S3 += i;
+        }
+
+        // Tính S4 = tổng các số chẵn không lớn hơn n
+        int S4;
+        for (int i = 2; i <= n; i += 2)
+        {
+            S4 += i;
+        }
+
+        // Tính S5 = tổng các số chia hết cho 7 và không lớn hơn n
+        int S5;
+        for (int i = 7; i <= n; i += 7)
+        {
+            S5 += i;
+        }
+
+        // Tính S6 = tổng các số không chia hết cho 7 và không lớn hơn n
+        int S6;
+        for (int i = 1; i <= n; i++)
+        {
+            if (i % 7 != 0)
+            {
+                S6 += i;
+            }
+        }
+
+        cout << "S1 = " << S1 << endl;
+        cout << "S2 = " << S2 << endl;
+        cout << "S3 = " << S3 << endl;
+        cout << "S4 = " << S4 << endl;
+        cout << "S5 = " << S5 << endl;
+        cout << "S6 = " << S6 << endl;
+
+        break;
+    case 11:
+        double a, b, dttgd, cvtgd, Ketqua;
+        cout << "Nhap a va b:" << endl;
+        cin >> a >> b;
+        dttgd = a * a * (sqrt(3) / 4);
+        cvtgd = 3 * a;
+        Ketqua = (2 * (a * a) + 3 * (b * b * b) + 4) / a + b;
+        cout << "Dien tich tam giac deu: " << dttgd << endl;
+        cout << "Chu vi tam giac deu: " << cvtgd << endl;
+        cout << "Cau 1.4.8: " << Ketqua << endl;
+        break;
+    case 12:
+        int gio, phut, giay;
+        int tongGiay;
+
+        // Nhập giờ, phút và giây người dùng
+        cout << "Nhap gio: ";
+        cin >> gio;
+
+        cout << "Nhap phut: ";
+        cin >> phut;
+
+        cout << "Nhap giay: ";
+        cin >> giay;
+
+        // Chuyển đổi thành tổng giây
+        tongGiay = gio * 3600 + phut * 60 + giay;
+
+        // In ra kết quả
+        cout << "Tong so giay: " << tongGiay << endl;
+        break;
+    case 13:
+        int totalSeconds, hours, minutes, seconds;
+
+        cout << "Nhap tong so giay: ";
+        cin >> totalSeconds;
+
+        // Tính toán giờ, phút và giây
+        hours = totalSeconds / 3600;
+        totalSeconds %= 3600;
+        minutes = totalSeconds / 60;
+        seconds = totalSeconds % 60;
+
+        // In kết quả
+        cout << "Gio: " << hours << endl;
+        cout << "Phut: " << minutes << endl;
+        cout << "Giay: " << seconds << endl;
+        break;
+    case 14:
+
+        cout << "Nhap tong giay: ";
+        cin >> totalSeconds;
+
+        hours = totalSeconds / 3600;
+        minutes = (totalSeconds % 3600) / 60;
+        seconds = totalSeconds % 60;
+
+        cout << "Ket qua: ";
+
+        // Kiểm tra và thêm số 0 giờ nếu cần thiết
+        if (hours < 10)
+        {
+            cout << "0";
+        }
+        cout << hours << ":";
+
+        // Kiểm tra và thêm số 0 vào phút nếu cần thiết
+        if (minutes < 10)
+        {
+            cout << "0";
+        }
+        cout << minutes << ":";
+
+        // Kiểm tra và thêm số 0 giây nếu cần thiết
+        if (seconds < 10)
+        {
+            cout << "0";
+        }
+        cout << seconds << endl;
+        break;
+    case 15:
+        int number;
+        cout << "Nhap so nguyen duong co dung 3 chu so: ";
+        cin >> number; // Kiểm tra số có đúng 3 chữ số hay không
+        if (number < 100 || number > 999)
+        {
+            cout << "So khong hop le. Vui long nhap lai so co dung 3 chu so." << endl;
+        }
+        else
+        {
+            // Tách chữ số
+            int digit1 = number / 100;
+            int digit2 = (number % 100) / 10;
+            int digit3 = number % 10;
+
+            // Đảo ngược số
+            int reversed_number = digit3 * 100 + digit2 * 10 + digit1;
+
+            cout << "So dao nguoc la: " << reversed_number << endl;
+        }
+        break;
+    default:
+        cout << "Ban chon thoat khoi chuong trinh" << endl;
+    }
+
+    return 1;
+}
