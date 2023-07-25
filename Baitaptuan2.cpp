@@ -1,6 +1,54 @@
 #include <iostream>
+#include <string.h>
 #include <math.h>
 using namespace std;
+
+// Hàm tính tiền thưởng dựa trên số ngày công
+double tinhTienThuong(int soNgayCong, double luongCoBan)
+{
+    if (soNgayCong >= 25)
+    {
+        return 0.2 * luongCoBan;
+    }
+    else if (soNgayCong >= 22 && soNgayCong < 25)
+    {
+        return 0.1 * luongCoBan;
+    }
+    else
+    {
+        return 0.0;
+    }
+}
+
+// Hàm tính tổng thu nhập của nhân viên
+double tinhTongThuNhap(double luongCoBan, int soNgayCong, string chucVu)
+{
+    double tongThuNhap = luongCoBan * soNgayCong;
+
+    // Tính phụ cấp theo chức vụ
+    if (chucVu == "GD")
+    {
+        tongThuNhap += 250000;
+    }
+    else if (chucVu == "PGD")
+    {
+        tongThuNhap += 200000;
+    }
+    else if (chucVu == "TP")
+    {
+        tongThuNhap += 180000;
+    }
+    else if (chucVu == "NV")
+    {
+        tongThuNhap += 150000;
+    }
+
+    // Tính tiền thưởng
+    double tienThuong = tinhTienThuong(soNgayCong, luongCoBan);
+    tongThuNhap += tienThuong;
+
+    return tongThuNhap;
+}
 
 int Nhap()
 {
@@ -260,6 +308,10 @@ const int gia_km_tu_6 = 11000;
 const int giam_gia_km_lon = 120;
 const double phan_tram_giam_gia = 0.1;
 int tong_tien = 0;
+string maNhanVien, hoTen, chucVu;
+double luongCoBan;
+int soNgayCong;
+double tongThuNhap;
 int main()
 {
     cout << "-------------BAI TAP CO BAN-------------" << endl;
@@ -567,6 +619,36 @@ int main()
         return 0;
         break;
     case 14:
+        // Nhập thông tin nhân viên
+        cout << "Nhap ma nhan vien: ";
+        cin >> maNhanVien;
+
+        cout << "Nhap ho va ten: ";
+        cin.ignore();
+        getline(cin, hoTen);
+
+        cout << "Nhap luong co ban: ";
+        cin >> luongCoBan;
+
+        cout << "Nhap so ngay cong: ";
+        cin >> soNgayCong;
+
+        cout << "Nhap chuc vu (GD/PGD/TP/NV): ";
+        cin >> chucVu;
+
+        // Tính toán thu nhập
+        tongThuNhap = tinhTongThuNhap(luongCoBan, soNgayCong, chucVu);
+
+        // Hiển thị thông tin và thu nhập của nhân viên
+        cout << "\nThong tin nhan vien:\n";
+        cout << maNhanVien << " ";
+        cout << hoTen << " ";
+        cout << luongCoBan << " ";
+        cout << soNgayCong << " ";
+        cout << chucVu << " ";
+        cout << tongThuNhap << " ";
+
+        return 0;
         break;
     case 15:
         break;
