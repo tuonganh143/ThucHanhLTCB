@@ -1,6 +1,32 @@
 #include <iostream>
 #include <math.h>
 using namespace std;
+
+int Nhap()
+{
+    int x;
+    do
+    {
+        cin >> x;
+        if (x < 0)
+            cout << "Nhap sai, yeu cau nhap lai!";
+    } while (x < 0);
+    return x;
+}
+
+double Tinh(int n)
+{
+    float s = 0, t = 0;
+    long p = 1;
+    for (int i = 1; i <= n; i++)
+    {
+        t = t + i;
+        p = p * i;
+        s = s + (double)t / p;
+    }
+    return s;
+}
+
 bool kiemTraSoNguyenTo(int number)
 {
     if (number <= 1)
@@ -181,6 +207,47 @@ void getPreviousDate(int &day, int &month, int &year)
     }
 }
 
+void Rutien(int amount)
+{
+    int count100000 = 0, count50000 = 0, count20000 = 0, count10000 = 0;
+
+    if (amount % 10000 != 0)
+    {
+        cout << "So tien rut khong chia het cho 10.000 vui long nhap lai.\n";
+        return;
+    }
+
+    while (amount >= 100000)
+    {
+        amount -= 100000;
+        count100000++;
+    }
+
+    while (amount >= 50000)
+    {
+        amount -= 50000;
+        count50000++;
+    }
+
+    while (amount >= 20000)
+    {
+        amount -= 20000;
+        count20000++;
+    }
+
+    while (amount >= 10000)
+    {
+        amount -= 10000;
+        count10000++;
+    }
+
+    cout << "So to tien can rut:\n";
+    cout << "Menh gia 100,000: " << count100000 << " to\n";
+    cout << "Menh gia 50,000: " << count50000 << " to\n";
+    cout << "Menh gia 20,000: " << count20000 << " to\n";
+    cout << "Menh gia 10,000: " << count10000 << " to\n";
+}
+
 int pageSize = 10; // Số lượng ký tự trên mỗi trang
 int currentPage = 1;
 int totalPages = 8; // Tổng số trang
@@ -207,6 +274,13 @@ int main()
     cout << "Nhap 8: Bai 8" << endl;
     cout << "Nhap 9: Bai 9" << endl;
     cout << "Nhap 10: Bai 10" << endl;
+    cout << "-------------BAI TAP UNG DUNG-------------" << endl;
+    cout << "Nhap 11: Bai 1" << endl;
+    cout << "Nhap 12: Bai 2" << endl;
+    cout << "Nhap 13: Bai 3" << endl;
+    cout << "Nhap 14: Bai 4" << endl;
+    cout << "Nhap 15: Bai 5" << endl;
+    cout << "Nhap 16: Bai 6" << endl;
     cout << "Nhap 0: de thoat khoi ung dung" << endl;
 
     int control;
@@ -455,6 +529,48 @@ int main()
         cin >> toan >> ly >> hoa;
         cout << "Hoc luc cua hoc sinh " << ten << endl;
         Diemtrungbinh(toan, ly, hoa);
+        break;
+    case 11:
+        while (currentPage <= totalPages)
+        {
+            system("cls"); // Xóa màn hình (cho Windows)
+
+            cout << "Bang ma ASCII - Trang" << currentPage << endl;
+            cout << "-------------------------" << endl;
+            cout << "Ky tu   Ma" << endl;
+            int start = (currentPage - 1) * pageSize;
+            int end = currentPage * pageSize - 1;
+            printASCII(start, end);
+
+            cout << endl;
+            cout << "Nhan Enter de xem trang tiep theo...";
+            cin.ignore(); // Đợi người dùng nhấn Enter để chuyển trang
+            currentPage++;
+        }
+        return 0;
+        break;
+    case 12:
+
+        cout << "Nhap so nguyen n: ";
+        n = Nhap();
+        cout << "Ket qua la: " << Tinh(n) << endl;
+
+        return 0;
+        break;
+    case 13:
+        int amount;
+        cout << "Nhap so tien can rut(chia het cho 10.000): ";
+        cin >> amount;
+
+        Rutien(amount);
+
+        return 0;
+        break;
+    case 14:
+        break;
+    case 15:
+        break;
+    case 16:
         break;
     default:
         cout << "Ban chon thoat khoi chuong trinh" << endl;
