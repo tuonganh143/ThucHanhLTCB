@@ -304,6 +304,51 @@ string kichthuocsophone(const string &input)
 
     return result;
 }
+// Hàm kiểm tra xem vị trí (x, y) có nằm trong ma trận hay không
+bool isValid(int x, int y, int M, int N)
+{
+    return (x >= 0 && x < M && y >= 0 && y < N);
+}
+
+// Hàm thực hiện thống kê các trường hợp có nguy cơ lây nhiễm
+int countPotentialInfections(int M, int N, int A[100][100])
+{
+    int potentialInfections = 0;
+
+    // Duyệt qua từng ô trong ma trận
+    for (int i = 0; i < M; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            // Nếu ô hiện tại là bệnh nhân (-1)
+            if (A[i][j] == -1)
+            {
+                // Duyệt qua 8 ô xung quanh (dx, dy) của ô bệnh nhân
+                for (int dx = -1; dx <= 1; dx++)
+                {
+                    for (int dy = -1; dy <= 1; dy++)
+                    {
+                        // Bỏ qua ô hiện tại
+                        if (dx == 0 && dy == 0)
+                            continue;
+
+                        // Tính toán tọa độ (x, y) của ô xung quanh
+                        int x = i + dx;
+                        int y = j + dy;
+
+                        // Nếu ô xung quanh nằm trong ma trận và có giá trị >= 0, tăng biến đếm potentialInfections lên 1
+                        if (isValid(x, y, M, N) && A[x][y] >= 0)
+                        {
+                            potentialInfections++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return potentialInfections;
+}
 string s;
 int main()
 {
@@ -372,7 +417,24 @@ int main()
 
         break;
     case 3:
+        int M, N, result;
+        int A[100][100];
 
+        // Nhập kích thước ma trận
+        cin >> M >> N;
+
+        // Nhập các giá trị của ma trận
+        for (int i = 0; i < M; i++)
+        {
+            for (int j = 0; j < N; j++)
+            {
+                cin >> A[i][j];
+            }
+        }
+
+        // Tính và in ra kết quả
+        result = countPotentialInfections(M, N, A);
+        cout << result << endl;
         break;
     case 4:
         int T;
